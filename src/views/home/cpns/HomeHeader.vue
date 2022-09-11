@@ -7,17 +7,31 @@
           size="large"
           placeholder="Please Input"
       />
-      <button @click="clickSearch(input)"><el-icon><Search /></el-icon></button>
+      <button @click="clickSearch()"><el-icon><Search /></el-icon></button>
   </div>
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {computed, ref} from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import axiosInstance from '@/servers/request/index'
 const input = ref('')
-const clickSearch = (input) => {
-  console.log(input.trim())
+
+const trimInput = computed(() => {
+  return input.value.trim()
+})
+
+const clickSearch = () => {
+  axiosInstance.get('/movies', {
+    params: {
+      type:'partial',
+      q: trimInput.value,
+      s:'s'
+    }
+  }).then(res => {
+    console.log("res:", res.data)
+  })
 }
 </script>
 
