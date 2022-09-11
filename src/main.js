@@ -1,5 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import * as Icons from '@element-plus/icons-vue'
+const app = createApp(App)
 
-createApp(App).use(router).mount('#app')
+// 注册Icons 全局组件
+Object.keys(Icons).forEach(key => {
+    app.component(key, Icons[key])
+})
+app.use(router).mount('#app')
