@@ -9,6 +9,17 @@
       />
       <button class="search" @click="clickSearch()"><el-icon><Search /></el-icon></button>
   </div>
+
+    <ul class="list" >
+      <li class="item" v-for="item in list">
+        <h3 class="title">{{ item.name }}</h3>
+      </li>
+    </ul>
+<!--    <ul class="list" >-->
+<!--      <li class="item">-->
+<!--        <h3 class="title">hhh</h3>-->
+<!--      </li>-->
+<!--    </ul>-->
     </div>
 </template>
 
@@ -19,6 +30,31 @@ import axiosInstance from '@/servers/request/index'
 import useHomeStore from "@/stores/home";
 const input = ref('')
 const homeStore = useHomeStore()
+let flag =ref(false)
+//一定得是响应式的才能渲染出来
+let list =ref([
+  {
+    "sid": "1291842",
+    "name": "当哈利遇到莎莉",
+    "rating": "0",
+    "img": "https://img2.doubanio.com/view/photo/s/public/p2172960925.jpg",
+    "year": "1989"
+  },
+  {
+    "sid": "1295038",
+    "name": "哈利·波特与魔法石",
+    "rating": "0",
+    "img": "https://img2.doubanio.com/view/photo/s/public/p2614949805.jpg",
+    "year": "2001"
+  },
+  {
+    "sid": "1298385",
+    "name": "解构爱情狂",
+    "rating": "0",
+    "img": "https://img2.doubanio.com/view/photo/s/public/p2099964935.jpg",
+    "year": "1997"
+  }
+])
 const trimInput = computed(() => {
   return input.value.trim()
 })
@@ -33,16 +69,23 @@ const clickSearch = () => {
   }).then(res => {
     console.log("res:", res.data)
     homeStore.searchList=res.data
+    console.log(homeStore.searchList[0].name)
+    list.value =homeStore.searchList
+    console.log('list[0].name是'+list.value[0].name)
+    flag.value=true
+    console.log(flag.value)
   })
 }
+
+
 </script>
 
 <style lang="less" scoped>
 .home-header{
   margin-top: 10rem;
-  height: 25vh;
+  height: 80vh;
   display: flex;
-  flex-direction:row;
+  flex-direction:column;
   :deep(.el-input){
     display:inline;
     margin-right: 2rem;
@@ -51,7 +94,10 @@ const clickSearch = () => {
     width: 40vw;
 
   }
-  .search{
+  :deep(.demo-input-size){
+    height: auto;
+  }
+ .search{
     width: 3rem;
     height: 1.8rem;
     display:inline;
