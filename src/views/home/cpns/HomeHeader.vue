@@ -16,8 +16,9 @@
 import {computed, ref} from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import axiosInstance from '@/servers/request/index'
+import useHomeStore from "@/stores/home";
 const input = ref('')
-
+const homeStore = useHomeStore()
 const trimInput = computed(() => {
   return input.value.trim()
 })
@@ -31,6 +32,7 @@ const clickSearch = () => {
     }
   }).then(res => {
     console.log("res:", res.data)
+    homeStore.searchList=res.data
   })
 }
 </script>
