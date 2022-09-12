@@ -10,16 +10,16 @@
       <button class="search" @click="clickSearch()"><el-icon><Search /></el-icon></button>
   </div>
 
-    <ul class="list" >
-      <li class="item" v-for="item in list">
-        <h3 class="title">{{ item.name }}</h3>
-      </li>
-    </ul>
-<!--    <ul class="list" >-->
-<!--      <li class="item">-->
-<!--        <h3 class="title">hhh</h3>-->
-<!--      </li>-->
-<!--    </ul>-->
+    <div class="list" v-if="flag">
+      <div class="item" v-for="item in newList.value">
+          <div class="left">
+            <h3 class="title">{{ item.name }}</h3>
+          </div>
+        <div class="right">
+          <img :src="item.img" :alt="item.name+'图片'">
+        </div>
+      </div>
+    </div>
     </div>
 </template>
 
@@ -55,6 +55,13 @@ let list =ref([
     "year": "1997"
   }
 ])
+const newList = computed(() => {
+  let reg=/img2/
+  for(let item of list.value){
+    item.img=item.img.replace(reg,'img9') //replace函数 原字符串不会改变
+  }
+  return  list
+})
 const trimInput = computed(() => {
   return input.value.trim()
 })
