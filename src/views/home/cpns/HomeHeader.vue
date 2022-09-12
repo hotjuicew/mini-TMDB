@@ -7,7 +7,7 @@
           size="large"
           placeholder="Please Input"
       />
-      <button @click="clickSearch()"><el-icon><Search /></el-icon></button>
+      <button class="search" @click="clickSearch()"><el-icon><Search /></el-icon></button>
   </div>
     </div>
 </template>
@@ -37,6 +37,22 @@ const clickSearch = () => {
 
 <style lang="less" scoped>
 .home-header{
+  margin-top: 10rem;
   height: 25vh;
+  display: flex;
+  flex-direction:row;
+  :deep(.el-input){
+    display:inline;
+    margin-right: 2rem;
+  }
+  :deep(.el-input__wrapper){
+    width: 40vw;
+
+  }
+  .search{
+    width: 3rem;
+    height: 1.8rem;
+    display:inline;
+  }
 }
 </style>
