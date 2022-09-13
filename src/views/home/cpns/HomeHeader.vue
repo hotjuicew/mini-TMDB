@@ -1,6 +1,6 @@
 <template>
   <div class="home-header">
-    <div class="demo-input-size">
+    <div class="search-bar">
       <el-input
           v-model="input"
           class="w-50 m-2"
@@ -101,7 +101,7 @@ const clickSearch = () => {
     width: 40vw;
 
   }
-  :deep(.demo-input-size){
+  :deep(.search-bar){
     height: auto;
   }
  .search{
