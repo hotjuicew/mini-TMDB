@@ -2,9 +2,7 @@ import { defineStore } from "pinia";
 
 const useHomeStore = defineStore("home", {
     state: () => ({
-        searchList:[
-
-        ]
+        searchList:[]
 
     }),
     actions: {

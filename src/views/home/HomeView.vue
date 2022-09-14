@@ -10,11 +10,7 @@
       <button class="search" @click="clickSearch()"><el-icon><Search /></el-icon></button>
     </div>
 
-
-
-    <router-view></router-view>
   </div>
-
 
 </template>
 
@@ -44,8 +40,7 @@ const clickSearch = () => {
     homeStore.searchList=res.data
     console.log(homeStore.searchList[0].name)
 
-    router.push("/search/"
-    )
+    router.push("/search")
   })
 }
 
@@ -55,7 +50,7 @@ const clickSearch = () => {
 <style lang="less" scoped>
 .home{
   margin-top: 10rem;
-  height: 80vh;
+  height: 10vh;
   display: flex;
   flex-direction:column;
   :deep(.el-input){

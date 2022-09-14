@@ -1,5 +1,9 @@
 <template>
- <home-view></home-view>
+  <div id="app">
+    <home-view></home-view>
+   <router-view></router-view>
+  </div>
+
 </template>
 <script setup>
 import HomeView from "@/views/home/HomeView";

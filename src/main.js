@@ -5,10 +5,6 @@ import * as Icons from '@element-plus/icons-vue'
 import './assets/css/index.css'
 import instanceP from '@/stores/index'
 const app = createApp(App)
-
-
-
-
 createApp(App).use(instanceP).mount('#app')
 
 // 注册Icons 全局组件
