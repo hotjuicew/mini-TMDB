@@ -2,14 +2,14 @@
   <div class="Title">
    <h2>List</h2>
     <div class="list">
-<!--      <div class="item" v-for="item in newList.value">-->
-<!--        <div class="left">-->
-<!--          <h3 class="title">{{ item.name }}</h3>-->
-<!--        </div>-->
-<!--        <div class="right">-->
-<!--          <img :src="item.img" :alt="item.name+'图片'">-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="item" v-for="item in newList.value">
+        <div class="left">
+          <h3 class="title">{{ item.name }}</h3>
+        </div>
+        <div class="right">
+          <img :src="item.img" :alt="item.name+'图片'">
+        </div>
+      </div>
     </div>
   </div>
 </template>

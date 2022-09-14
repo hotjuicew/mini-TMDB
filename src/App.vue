@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <home-view></home-view>
+    <search-bar></search-bar>
    <router-view></router-view>
   </div>
 
 </template>
 <script setup>
-import HomeView from "@/views/home/HomeView";
+import SearchBar from "@/components/SearchBar";
 </script>
 <style>
 #app {
