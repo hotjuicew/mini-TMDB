@@ -8,7 +8,6 @@
           <div class="star">
               <el-rate v-model="value" allow-half />
           </div>
-          <div class="year"></div>
         </div>
         <div class="right">
           <img class="search-img" :src="item.img" :alt="item.name+'图片'">
@@ -55,8 +54,8 @@ const value = ref()
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
-      .year{
-        margin-top: 0.5rem;
+      .star{
+        margin-top: 0.3rem;
       }
     }
     .search-img{

@@ -1,6 +1,8 @@
 <template>
   <div class="search-bar">
     <div class="search-container">
+      <div class="logo">
+      </div>
       <el-input
           v-model="input"
           class="w-50 m-2"
@@ -46,8 +48,17 @@ async function clickSearch () {
   justify-content: center;
   align-items: center;
 
-  .search-container {
-    display: inline;
+  .logo {
+    background: url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) no-repeat 0 12px;
+    background-image: -webkit-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
+    //background-image: -moz-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
+    //background-image: -ms-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
+    //background-image: -o-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
+    position: absolute;
+    left: 26vw;
+    top: 5vw;
+    height: 56px;
+    width: 145px;
   }
 
   :deep(.el-input) {
