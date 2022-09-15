@@ -44,7 +44,7 @@ const newList = computed(() => {
   display: flex;
   flex-direction: column;
   align-items:center;
-  width: 50vw;
+  width: 45vw;
   .search-title{
     align-self:flex-start;
   }
@@ -54,7 +54,7 @@ const newList = computed(() => {
   .item{
     display: flex;
     justify-content: space-between;
-    width: 50vw;
+    width: 45vw;
     margin-top: 1rem;
     .left{
       display: flex;
