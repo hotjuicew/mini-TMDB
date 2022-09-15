@@ -1,8 +1,8 @@
 <template>
   <div class="list-view">
     <div class="list">
-      <header class="search-title">相关豆瓣内容:</header>
-      <div class="test">{{homeStore.getSearchListSid}}</div>
+      <header class="search-title" >相关豆瓣内容:</header>
+      <div class="test">{{homeStore.getSearchListSid[0]}}{{fullMovieInf[0].name}}</div>
       <div class="item" v-for="item in homeStore.searchList">
         <div class="left">
           <h3 class="title">{{ item.name }}</h3>
@@ -19,9 +19,9 @@
 <script setup>
 
 import useHomeStore from "@/stores/home";
-
 const homeStore=useHomeStore()
-
+import { storeToRefs } from 'pinia'
+const { fullMovieInf } = storeToRefs(homeStore)
 </script>
 
 <style lang="less" scoped>

@@ -26,11 +26,13 @@ const router = useRouter()
 
 let input = ref('')
 
-
-const clickSearch = () => {
+async function clickSearch () {
   homeStore.input=input.value.trim()
-  homeStore.getSearchList()
-  router.push("/search")
+  await homeStore.getSearchList()
+  await homeStore.getFullInf()
+
+  console.log(homeStore.fullMovieInf)
+  await router.push("/search")
 }
 </script>
 
