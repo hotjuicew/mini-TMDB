@@ -17,34 +17,20 @@
 </template>
 
 <script setup>
-import {computed, ref} from 'vue'
+import { ref} from 'vue'
 import {Search} from '@element-plus/icons-vue'
-import axiosInstance from '@/servers/request/index'
 import useHomeStore from "@/stores/home";
-import {useRouter} from "vue-router";
-
-const router = useRouter()
-const input = ref('')
 const homeStore = useHomeStore()
+import {useRouter} from "vue-router/dist/vue-router";
+const router = useRouter()
 
-const trimInput = computed(() => {
-  return input.value.trim()
-})
+let input = ref('')
+
 
 const clickSearch = () => {
-  axiosInstance.get('/movies', {
-    params: {
-      type: 'partial',
-      q: trimInput.value,
-      s: 's'
-    }
-  }).then(res => {
-    console.log("res:", res.data)
-    homeStore.searchList = res.data
-    console.log(homeStore.searchList[0].name)
-
-    router.push("/search")
-  })
+  homeStore.input=input.value.trim()
+  homeStore.getSearchList()
+  router.push("/search")
 }
 </script>
 

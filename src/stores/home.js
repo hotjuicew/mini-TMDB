@@ -3,6 +3,7 @@ import axiosInstance from "@/servers/request";
 
 const useHomeStore = defineStore("home", {
     state: () => ({
+        input:'111',
         searchList: [
             {
                 "sid": "1295038",
@@ -27,20 +28,32 @@ const useHomeStore = defineStore("home", {
             }
         ],
         fullMovieInf: []
-
     }),
     getters: {
         getSearchListSid: function (state) {
             let sid
             sid=state.searchList.map(item => item.sid)
-            this.getFullInf()
-            console.log('full'+this.fullMovieInf)
             return sid
         }
     },
 
 
     actions: {
+        //通过关键词搜索
+         async getSearchList(){
+            await axiosInstance.get('/movies', {
+                params: {
+                    type: 'partial',
+                    q: this.input,
+                    s: 's'
+                }
+            }).then(res => {
+                console.log("res:", res.data)
+                this.searchList = res.data
+                console.log(this.state.searchList[0].name)
+            })
+        },
+        //通过sid获取数据
         getFullInf: () => {
             axiosInstance.get('/movies' + this.getSearchListSid[0]).then(res => {
                 this.fullMovieInf.push = res.data
