@@ -2,11 +2,13 @@
   <div class="list-view">
     <div class="list">
       <header class="search-title" >相关豆瓣内容:</header>
-      <div class="test">{{homeStore.getSearchListSid[0]}}{{fullMovieInf[0].name}}</div>
-      <div class="item" v-for="item in homeStore.searchList">
+      <div class="item" v-for="item in homeStore.fullMovieInf">
         <div class="left">
-          <h3 class="title">{{ item.name }}</h3>
-          <div class="year">{{item.year}}</div>
+          <h3 class="title">{{ item.name }}({{item.year}})</h3>
+          <div class="star">
+              <el-rate v-model="value" allow-half />
+          </div>
+          <div class="year"></div>
         </div>
         <div class="right">
           <img class="search-img" :src="item.img" :alt="item.name+'图片'">
@@ -17,11 +19,14 @@
 </template>
 
 <script setup>
-
+import { ref } from 'vue'
 import useHomeStore from "@/stores/home";
 const homeStore=useHomeStore()
-import { storeToRefs } from 'pinia'
-const { fullMovieInf } = storeToRefs(homeStore)
+
+
+// star
+const value = ref()
+
 </script>
 
 <style lang="less" scoped>

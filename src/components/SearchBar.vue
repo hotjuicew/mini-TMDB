@@ -5,7 +5,7 @@
           v-model="input"
           class="w-50 m-2"
           size="large"
-          placeholder="Please Input"
+          placeholder="搜索电影、电视剧、综艺、影人"
       />
       <button class="search" @click="clickSearch()">
         <el-icon>
