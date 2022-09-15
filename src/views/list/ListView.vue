@@ -2,15 +2,17 @@
   <div class="list-view">
     <div class="list">
       <header class="search-title" >相关豆瓣内容:</header>
-      <div class="item" v-for="item in homeStore.fullMovieInf">
+      <div class="item" v-for="item in homeStore.searchList">
         <div class="left">
-          <h3 class="title">{{ item.name }}({{item.year}})</h3>
+          <h3 class="title">{{ item.title }}{{item.name}}</h3>
+          <span class="time">{{item.release_date}}{{item.first_air_date
+            }}</span>
           <div class="star">
               <el-rate v-model="value" allow-half />
           </div>
         </div>
         <div class="right">
-          <img class="search-img" :src="item.img" :alt="item.name+'图片'">
+          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.poster_path" >
         </div>
       </div>
     </div>
@@ -18,10 +20,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref} from 'vue'
 import useHomeStore from "@/stores/home";
 const homeStore=useHomeStore()
 
+//截取年份
+const getYear = ((time) => {
+  if(time){
+    return time.slice(0,4)
+  }
+  else return ''
+})
 
 // star
 const value = ref()
@@ -54,6 +63,12 @@ const value = ref()
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
+      .time{
+        margin-top: 0.2rem;
+        font: 1rem Arial, Helvetica, sans-serif;
+        line-height: 150%;
+        color: #666666;
+      }
       .star{
         margin-top: 0.3rem;
       }

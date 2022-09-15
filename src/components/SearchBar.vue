@@ -31,9 +31,9 @@ let input = ref('')
 async function clickSearch () {
   homeStore.input=input.value.trim()
   await homeStore.getSearchList()
-  await homeStore.getFullInf()
-
-  console.log(homeStore.fullMovieInf)
+  // await homeStore.getFullInf()
+  // console.log(homeStore.fullMovieInf)
+  console.log(homeStore.searchList)
   await router.push("/search")
 }
 </script>
