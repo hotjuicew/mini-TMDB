@@ -2,7 +2,7 @@
   <div class="list-view">
     <div class="list">
       <header class="search-title">相关豆瓣内容:</header>
-      <div class="item" v-for="item in newList.value">
+      <div class="item" v-for="item in homeStore.searchList">
         <div class="left">
           <h3 class="title">{{ item.name }}</h3>
           <div class="year">{{item.year}}</div>
@@ -16,23 +16,11 @@
 </template>
 
 <script setup>
-import {computed, ref} from "vue";
+
 import useHomeStore from "@/stores/home";
 
 const homeStore=useHomeStore()
-let list =ref(homeStore.searchList)
 
-const newList = computed(() => {
-  let reg=/img2/
-  for(let item of list.value){
-    item.img=item.img.replace(reg,'img9') //replace函数 原字符串不会改变
-  }
-  return  list
-})
-
-// import { getCurrentInstance } from 'vue'
-// const instance = getCurrentInstance();
-// instance?.proxy?.$forceUpdate();
 </script>
 
 <style lang="less" scoped>
@@ -60,6 +48,7 @@ const newList = computed(() => {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      text-align: left;
       .year{
         margin-top: 0.5rem;
       }
