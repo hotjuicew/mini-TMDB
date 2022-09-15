@@ -1,8 +1,9 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
+import axiosInstance from "@/servers/request";
 
 const useHomeStore = defineStore("home", {
     state: () => ({
-        searchList:[
+        searchList: [
             {
                 "sid": "1295038",
                 "name": "哈利·波特与魔法石",
@@ -24,14 +25,28 @@ const useHomeStore = defineStore("home", {
                 "img": "https://img2.doubanio.com/view/photo/s/public/p2440298618.jpg",
                 "year": "2002"
             }
-        ]
+        ],
+        fullMovieInf: []
 
     }),
+    getters: {
+        getSearchListSid: function (state) {
+            let sid
+            sid=state.searchList.map(item => item.sid)
+            this.getFullInf()
+            console.log('full'+this.fullMovieInf)
+            return sid
+        }
+    },
+
+
     actions: {
-        // async fetchSearchList() {
-        //     const res = await getSearchList()
-        //     this.searchList = res.data
-        // },
+        getFullInf: () => {
+            axiosInstance.get('/movies' + this.getSearchListSid[0]).then(res => {
+                this.fullMovieInf.push = res.data
+            })
+        }
+
     }
 })
 

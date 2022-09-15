@@ -2,6 +2,7 @@
   <div class="list-view">
     <div class="list">
       <header class="search-title">相关豆瓣内容:</header>
+      <div class="test">{{homeStore.getSearchListSid}}</div>
       <div class="item" v-for="item in homeStore.searchList">
         <div class="left">
           <h3 class="title">{{ item.name }}</h3>
