@@ -1,7 +1,6 @@
 <template>
   <div class="starRate">
-    <div class="test">{{value}}</div>
-    <!--        原来必须是value 而不能自己命名 好坑QAQ-->
+    <!-- 原来必须是value 而不能自己命名 好坑QAQ-->
     <el-rate
         v-model="value"
         disabled
@@ -23,5 +22,8 @@ let value=ref((props.value/2).toFixed(1))
 </script>
 
 <style lang="less" scoped>
-
+.starRate{
+  position: relative;
+  right: 3px;
+}
 </style>
