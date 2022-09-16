@@ -1,3 +1,4 @@
+
 <template>
   <div class="list-view">
     <div class="list">
@@ -21,11 +22,11 @@
 
 <script setup>
 
-import useHomeStore from "@/stores/home";
+import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
-const homeStore=useHomeStore()
+const homeStore=useListStore()
 
-
+//todo 把当前页面放到MovieList里面，同时增加很多个分类的组件。之后这些页面应该在不同路径下，就像官网那样
 
 
 

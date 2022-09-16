@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import axiosInstance from "@/servers/request";
 
-const useHomeStore = defineStore("home", {
+const useListStore = defineStore("home", {
     state: () => ({
         input:'111',
         searchedFlag:false, //标记是否点了搜索建
@@ -46,4 +46,4 @@ const useHomeStore = defineStore("home", {
     }
 })
 
-export default useHomeStore
+export default useListStore

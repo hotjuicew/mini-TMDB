@@ -21,8 +21,8 @@
 <script setup>
 import { ref} from 'vue'
 import {Search} from '@element-plus/icons-vue'
-import useHomeStore from "@/stores/home";
-const homeStore = useHomeStore()
+import useListStore from "@/stores/listStore";
+const homeStore = useListStore()
 import {useRouter} from "vue-router/dist/vue-router";
 const router = useRouter()
 
