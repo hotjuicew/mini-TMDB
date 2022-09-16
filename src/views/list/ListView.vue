@@ -22,7 +22,7 @@
 <script setup>
 
 import useHomeStore from "@/stores/home";
-import StarRate from '@/views/list/cpn/StarRate'
+import StarRate from '@/components/StarRate'
 const homeStore=useHomeStore()
 
 
