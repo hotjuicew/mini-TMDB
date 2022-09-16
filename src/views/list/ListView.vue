@@ -7,12 +7,10 @@
           <h3 class="title">{{ item.title }}{{item.name}}</h3>
           <span class="time">{{item.release_date}}{{item.first_air_date
             }}</span>
-          <div class="star">
-              <el-rate v-model="value" allow-half />
-          </div>
+          <star-rate :value="item.vote_average"></star-rate>
         </div>
         <div class="right">
-          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.poster_path" >
+          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.poster_path"  alt="{{item.name}}">
         </div>
       </div>
     </div>
@@ -22,6 +20,7 @@
 <script setup>
 import { ref} from 'vue'
 import useHomeStore from "@/stores/home";
+import StarRate from '@/views/list/cpn/StarRate'
 const homeStore=useHomeStore()
 
 //截取年份
