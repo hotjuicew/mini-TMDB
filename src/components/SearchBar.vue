@@ -2,6 +2,7 @@
   <div class="search-bar">
     <div class="search-container">
       <div class="logo">
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg" alt="">
       </div>
       <el-input
           v-model="input"
@@ -49,11 +50,6 @@ async function clickSearch () {
   align-items: center;
 
   .logo {
-    background: url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) no-repeat 0 12px;
-    background-image: -webkit-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
-    //background-image: -moz-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
-    //background-image: -ms-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
-    //background-image: -o-image-set(url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie_a12_2.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/3e96b44/movie/assets/lg_movie@2x.png) 2x);
     position: absolute;
     left: 26vw;
     top: 5vw;
