@@ -41,7 +41,6 @@ async function clickSearch () {
   margin-top: 10rem;
   height: 10vh;
   display: flex;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;

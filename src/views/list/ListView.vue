@@ -1,6 +1,6 @@
-
 <template>
   <div class="list-view">
+    <side-bar></side-bar>
     <div class="list">
       <header class="search-title" >相关豆瓣内容:</header>
       <div class="item" v-for="item in listStore.movieList">
@@ -24,6 +24,7 @@
 
 import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
+import SideBar from '@/views/list/cpn/SideBar'
 const listStore=useListStore()
 
 //todo 把当前页面放到MovieList里面，同时增加很多个分类的组件。之后这些页面应该在不同路径下，就像官网那样
@@ -36,13 +37,16 @@ const listStore=useListStore()
 
 .list-view{
   display: flex;
-  justify-content: center;
 }
 .list{
+  //align-self: center;
   display: flex;
   flex-direction: column;
   align-items:center;
   width: 45vw;
+  position: sticky;
+  top: 20vh;
+  left: 27vw;
   .search-title{
     align-self:flex-start;
   }
