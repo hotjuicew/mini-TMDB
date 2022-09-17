@@ -3,7 +3,7 @@
   <div class="list-view">
     <div class="list">
       <header class="search-title" >相关豆瓣内容:</header>
-      <div class="item" v-for="item in homeStore.searchList">
+      <div class="item" v-for="item in listStore.movieList">
         <div class="left">
           <h3 class="title">{{ item.title }}{{item.name}}</h3>
           <p class="original-title" v-if="item.original_title!==item.name&&item.original_title!==item.title">原名：{{item.original_title}}</p>
@@ -24,7 +24,7 @@
 
 import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
-const homeStore=useListStore()
+const listStore=useListStore()
 
 //todo 把当前页面放到MovieList里面，同时增加很多个分类的组件。之后这些页面应该在不同路径下，就像官网那样
 

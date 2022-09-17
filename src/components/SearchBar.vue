@@ -22,18 +22,16 @@
 import { ref} from 'vue'
 import {Search} from '@element-plus/icons-vue'
 import useListStore from "@/stores/listStore";
-const homeStore = useListStore()
+const listStore = useListStore()
 import {useRouter} from "vue-router/dist/vue-router";
 const router = useRouter()
 
 let input = ref('')
 
 async function clickSearch () {
-  homeStore.input=input.value.trim()
-  await homeStore.getSearchList()
-  // await homeStore.getFullInf()
-  // console.log(homeStore.fullMovieInf)
-  console.log(homeStore.searchList)
+  listStore.input=input.value.trim()
+  await listStore.getSearchList()
+  console.log(listStore.movieList[0])
   await router.push("/search")
 }
 </script>

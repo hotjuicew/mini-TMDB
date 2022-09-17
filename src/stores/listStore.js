@@ -1,26 +1,54 @@
 import {defineStore} from "pinia";
 import axiosInstance from "@/servers/request";
-
-const useListStore = defineStore("home", {
+import axios from "axios";
+axiosInstance.all=axios.all
+axiosInstance.spread=axios.spread
+const useListStore = defineStore("list", {
     state: () => ({
-        input:'111',
-        searchedFlag:false, //标记是否点了搜索建
-        searchList: [],
-        fullMovieInf: []
+        input:'',
+        tvList: [],
+        movieList:[],
+        personList:[],
+        collectionList:[],
     }),
     getters: {
-        getSearchListSid: function (state) {
-            let sid
-            sid=state.searchList.map(item => item.sid)
-            return sid
-        }
+       // getSearchList(){
+       //      this.getSearchMovie().then(res => {
+       //          this.movieList = res.data.results
+       //      })
+       //      this.getSearchTV().then(res => {
+       //          this.tvList = res.data.results
+       //      })
+       //      this.getSearchPerson().then(res => {
+       //          this.personList = res.data.results
+       //      })
+       //     this.getSearchCollection().then(res => {
+       //          this.collectionList = res.data.results
+       //      })
+       //  },
     },
 
 
     actions: {
-        //通过关键词搜索
-         async getSearchList(){
-            await axiosInstance.get('/search/multi', {
+        //axios.all是一个静态方法
+        getSearchList(){
+            Promise.all([
+                this.getSearchTV(),
+                this.getSearchMovie(),
+                this.getSearchPerson(),
+                this.getSearchCollection()
+            ]).then(axiosInstance.spread((tvRes, movieRes,personRes,collectionRes) => {
+    this.movieList = tvRes.data.results
+    this.tvList = movieRes.data.results
+    this.personList = personRes.data.results
+    this.collectionList = collectionRes.data.results
+            }))
+        },
+
+
+        //search TV
+         getSearchTV(){
+            return axiosInstance.get('/search/tv', {
                 params: {
                     api_key: '6575ea93f20a3172600a4cfb722e23ce',
                     language:'zh',
@@ -28,20 +56,41 @@ const useListStore = defineStore("home", {
                     page: 1,
                     include_adult:false
                 }
-            }).then(res => {
-                this.searchList = res.data.results
             })
         },
-        //通过sid获取数据
-         async getFullInf() {
-             this.fullMovieInf=[]
-             for(let i=0;i<3;i++){
-                 let sid=await this.getSearchListSid[i]
-                await axiosInstance.get('/movies/' + sid).then(res => {
-                     this.fullMovieInf.push(res.data)
-                 })
-             }
-        }
+         getSearchMovie(){
+            return axiosInstance.get('/search/movie', {
+                params: {
+                    api_key: '6575ea93f20a3172600a4cfb722e23ce',
+                    language:'zh',
+                    query: this.input,
+                    page: 1,
+                    include_adult:false
+                }
+            })
+        },
+         getSearchPerson(){
+            return axiosInstance.get('/search/person', {
+                params: {
+                    api_key: '6575ea93f20a3172600a4cfb722e23ce',
+                    language:'zh',
+                    query: this.input,
+                    page: 1,
+                    include_adult:false
+                }
+            })
+        },
+
+         getSearchCollection(){
+            return axiosInstance.get('/search/collection', {
+                params: {
+                    api_key: '6575ea93f20a3172600a4cfb722e23ce',
+                    language:'zh',
+                    query: this.input,
+                    page: 1,
+                }
+            })
+        },
 
     }
 })
