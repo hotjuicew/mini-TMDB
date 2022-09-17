@@ -1,7 +1,8 @@
 import {defineStore} from "pinia";
 import axiosInstance from "@/servers/request";
 import axios from "axios";
-
+import JsonToHump from "@/hooks/jsonToHump";
+import jsonToHump from "@/hooks/jsonToHump";
 axiosInstance.all = axios.all
 axiosInstance.spread = axios.spread
 const useListStore = defineStore("list", {
@@ -36,10 +37,10 @@ const useListStore = defineStore("list", {
                 this.getSearchPerson(),
                 this.getSearchCollection()
             ]).then(axiosInstance.spread((tvRes, movieRes, personRes, collectionRes) => {
-                this.tvData = tvRes.data
-                this.movieData = movieRes.data
-                this.personData = personRes.data
-                this.collectionData = collectionRes.data
+                this.tvData = jsonToHump(tvRes.data)
+                this.movieData = jsonToHump(movieRes.data )
+                this.personData = jsonToHump(personRes.data)
+                this.collectionData = jsonToHump(collectionRes.data)
             }))
         },
 
