@@ -1,15 +1,14 @@
 <template>
   <div class="side-bar">
-    <h5 class="mb-2">搜索结果</h5>
+    <h5 class="mb-2 title">搜索结果</h5>
     <el-menu
-        default-active="2"
+        default-active="1"
         class="el-menu-vertical-demo"
-
     >
-      <el-menu-item index="1">
+      <el-menu-item index="1" >
         <span class="side-bar-name">剧集</span>
       </el-menu-item>
-      <el-menu-item index="2">
+      <el-menu-item index="2" @click="clickMovie()">
         <span class="side-bar-name">电影</span>
       </el-menu-item>
       <el-menu-item index="3" >
@@ -24,10 +23,18 @@
 </template>
 
 <script setup>
-
+import {useRouter} from "vue-router/dist/vue-router";
+const router = useRouter()
+const clickMovie = () => {
+  router.push('/movie')
+}
 </script>
 
 <style lang="less" scoped>
+.title{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 .side-bar{
   width: 10vw;
   margin-right: 5vw;
