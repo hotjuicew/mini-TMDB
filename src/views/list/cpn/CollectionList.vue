@@ -1,13 +1,69 @@
 <template>
-  <div class="collectionList">
-   <h2>collectionList</h2>
+  <div class="collection-list">
+    <h2>collection-list</h2>
+    <div class="list">
+      <div class="item" v-for="item in listStore.tvList">
+        <div class="left">
+          <h3 class="title">{{item.name}}</h3>
+          <p class="original-title" v-if="item.original_name!==item.name">原名：{{item.original_name}}</p>
+        </div>
+        <div class="right">
+          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.poster_path"  alt="{{item.name}}">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-
+import useListStore from "@/stores/listStore";
+import StarRate from '@/components/StarRate'
+const listStore=useListStore()
 </script>
 
 <style lang="less" scoped>
+.collection-list{
+  //align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 45vw;
+  position: sticky;
+  top: 20vh;
+  left: 27vw;
 
+  .item{
+    display: flex;
+    justify-content: space-between;
+    width: 45vw;
+    max-height: calc(@img-height - 0.7rem) ;
+    margin-top: 1rem;
+    @item-padding:1rem;
+    padding: @item-padding;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    border: 1px solid rgba(var(--lightGrey), 1);
+    background-color: #fff;
+    .left{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      .original-title .time{
+        margin-top: 0.1rem;
+        font: 1rem Arial, Helvetica, sans-serif;
+        line-height: 150%;
+        color: #666666;
+      }
+      .star{
+        margin-top: 0.3rem;
+      }
+
+    }
+    @img-height: 12vw;//;忘记了 迷惑了好久QAQ
+    .search-img{
+      height: @img-height;
+    }
+  }
+
+}
 </style>
