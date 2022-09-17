@@ -28,12 +28,13 @@ const router = useRouter()
 
 let input = ref('')
 
-async function clickSearch () {
+
+async function clickSearch(){
   listStore.input=input.value.trim()
-  await listStore.getSearchList()
-  console.log(listStore.movieList[0])
+  await listStore.getSearchData()
   await router.push("/search")
 }
+
 </script>
 
 <style lang="less" scoped>

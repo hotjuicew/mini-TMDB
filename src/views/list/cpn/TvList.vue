@@ -2,7 +2,7 @@
   <div class="tvList">
    <h2>tvList</h2>
     <div class="list">
-      <div class="item" v-for="item in listStore.movieList">
+      <div class="item" v-for="item in listStore.tvList">
         <div class="left">
           <h3 class="title">{{ item.title }}{{item.name}}</h3>
           <p class="original-title" v-if="item.original_title!==item.name&&item.original_title!==item.title">原名：{{item.original_title}}</p>

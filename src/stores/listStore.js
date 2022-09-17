@@ -7,24 +7,30 @@ axiosInstance.spread = axios.spread
 const useListStore = defineStore("list", {
     state: () => ({
         input: '',
-        tvData:{},
-        movieData:{},
-        personData:{},
-        collectionData:{},
-        tvList: this.tvData.results,
-        movieList: this.movieData.results,
-        personList: this.personData.results,
-        collectionList: this.collectionData.results,
+        tvData: {},
+        movieData: {},
+        personData: {},
+        collectionData: {},
+        tvList: [],
+        movieList: [],
+        personList: [],
+        collectionList: [],
     }),
-    getters: {
-
-    },
+    getters: {},
 
 
     actions: {
+        async getSearchData() {
+            await this.getSearchList()
+            this.tvList =  this.tvData.results
+            this.movieList =  this.movieData.results
+            this.personList = this.personData.results
+            this.collectionList =  this.collectionData.results
+        }
+        ,
         //axios.all是一个静态方法
-        getSearchList() {
-            Promise.all([
+        async getSearchList() {
+            await Promise.all([
                 this.getSearchTV(),
                 this.getSearchMovie(),
                 this.getSearchPerson(),
@@ -38,8 +44,8 @@ const useListStore = defineStore("list", {
         },
 
         //search TV
-        getSearchTV() {
-            return axiosInstance.get('/search/tv', {
+        async getSearchTV() {
+            return await axiosInstance.get('/search/tv', {
                 params: {
                     api_key: '6575ea93f20a3172600a4cfb722e23ce',
                     language: 'zh',
@@ -49,8 +55,8 @@ const useListStore = defineStore("list", {
                 }
             })
         },
-        getSearchMovie() {
-            return axiosInstance.get('/search/movie', {
+        async getSearchMovie() {
+            return await axiosInstance.get('/search/movie', {
                 params: {
                     api_key: '6575ea93f20a3172600a4cfb722e23ce',
                     language: 'zh',
@@ -60,8 +66,8 @@ const useListStore = defineStore("list", {
                 }
             })
         },
-        getSearchPerson() {
-            return axiosInstance.get('/search/person', {
+        async getSearchPerson() {
+            return await axiosInstance.get('/search/person', {
                 params: {
                     api_key: '6575ea93f20a3172600a4cfb722e23ce',
                     language: 'zh',
@@ -72,8 +78,8 @@ const useListStore = defineStore("list", {
             })
         },
 
-        getSearchCollection() {
-            return axiosInstance.get('/search/collection', {
+        async getSearchCollection() {
+            return await axiosInstance.get('/search/collection', {
                 params: {
                     api_key: '6575ea93f20a3172600a4cfb722e23ce',
                     language: 'zh',
