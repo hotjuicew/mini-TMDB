@@ -7,12 +7,18 @@ axiosInstance.spread = axios.spread
 const useListStore = defineStore("list", {
     state: () => ({
         input: '',
-        tvList: [],
-        movieList: [],
-        personList: [],
-        collectionList: [],
+        tvData:{},
+        movieData:{},
+        personData:{},
+        collectionData:{},
+        tvList: this.tvData.results,
+        movieList: this.movieData.results,
+        personList: this.personData.results,
+        collectionList: this.collectionData.results,
     }),
-    getters: {},
+    getters: {
+
+    },
 
 
     actions: {
@@ -24,13 +30,12 @@ const useListStore = defineStore("list", {
                 this.getSearchPerson(),
                 this.getSearchCollection()
             ]).then(axiosInstance.spread((tvRes, movieRes, personRes, collectionRes) => {
-                this.movieList = tvRes.data.results
-                this.tvList = movieRes.data.results
-                this.personList = personRes.data.results
-                this.collectionList = collectionRes.data.results
+                this.tvData = tvRes.data
+                this.movieData = movieRes.data
+                this.personData = personRes.data
+                this.collectionData = collectionRes.data
             }))
         },
-
 
         //search TV
         getSearchTV() {
