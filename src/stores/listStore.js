@@ -1,7 +1,6 @@
 import {defineStore} from "pinia";
 import axiosInstance from "@/servers/request";
 import axios from "axios";
-import JsonToHump from "@/hooks/jsonToHump";
 import jsonToHump from "@/hooks/jsonToHump";
 axiosInstance.all = axios.all
 axiosInstance.spread = axios.spread
@@ -23,15 +22,15 @@ const useListStore = defineStore("list", {
     actions: {
         async getSearchData() {
             await this.getSearchList()
-            this.tvList =  this.tvData.results
-            this.movieList =  this.movieData.results
-            this.personList = this.personData.results
-            this.collectionList =  this.collectionData.results
+            this.tvList =  this.tvData?.results
+            this.movieList =  this.movieData?.results
+            this.personList = this.personData?.results
+            this.collectionList =  this.collectionData?.results
         }
         ,
         //axios.all是一个静态方法
-        async getSearchList() {
-            await Promise.all([
+         getSearchList() {
+            Promise.all([
                 this.getSearchTV(),
                 this.getSearchMovie(),
                 this.getSearchPerson(),
