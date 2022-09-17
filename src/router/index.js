@@ -11,11 +11,30 @@ const router = createRouter({
             component: () => import("@/views/home/HomeView"),
 
         },
-
         {
-            path: "/search",
-            component: () => import("../views/list/ListView")
-        }
+            path:'/search',
+            redirect:'/search/tv',
+            component: () => import("../views/list/ListView"),
+            children:[
+                {
+                    path: "/search/tv",
+                    component: () => import("../views/list/cpn/TvList.vue")
+                },
+                {
+                    path: "/search/movie",
+                    component: () => import("../views/list/cpn/MovieList.vue")
+                },
+                {
+                    path: "/search/person",
+                    component: () => import("../views/list/cpn/PersonList.vue")
+                },
+                {
+                    path: "/search/collection",
+                    component: () => import("../views/list/cpn/CollectionList")
+                },
+            ]
+        },
+
     ]
 })
 

@@ -1,7 +1,7 @@
 <template>
   <div class="list-view">
     <side-bar></side-bar>
-
+<router-view></router-view>
   </div>
 </template>
 
@@ -11,7 +11,6 @@
 import SideBar from '@/views/list/cpn/SideBar'
 
 
-//todo 把当前页面放到MovieList里面，同时增加很多个分类的组件。之后这些页面应该在不同路径下，就像官网那样
 
 
 

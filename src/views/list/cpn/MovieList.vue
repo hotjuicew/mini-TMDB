@@ -1,6 +1,6 @@
 <template>
-  <div class="Title">
-   <h2>Title</h2>
+  <div class="movie-list">
+   <h2>movie-list</h2>
   </div>
 </template>
 

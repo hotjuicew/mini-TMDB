@@ -6,27 +6,36 @@
         class="el-menu-vertical-demo"
     >
       <el-menu-item index="1" >
-        <span class="side-bar-name">剧集</span>
+        <span class="side-bar-name" @click="clickTV">剧集</span>
       </el-menu-item>
-      <el-menu-item index="2" @click="clickMovie()">
+      <el-menu-item index="2" @click="clickMovie">
         <span class="side-bar-name">电影</span>
       </el-menu-item>
-      <el-menu-item index="3" >
+      <el-menu-item index="3" @click="clickPerson">
         <span class="side-bar-name">人物</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="4" @click="clickCollectionList">
         <span class="side-bar-name">系列</span>
       </el-menu-item>
-    </el-menu>
 
+    </el-menu>
   </div>
 </template>
 
 <script setup>
 import {useRouter} from "vue-router/dist/vue-router";
 const router = useRouter()
+const clickTV = () => {
+  router.push('/search/tv')
+}
 const clickMovie = () => {
-  router.push('/movie')
+  router.push('/search/movie')
+}
+const clickPerson = () => {
+  router.push('/search/person')
+}
+const clickCollectionList = () => {
+  router.push('/search/collection')
 }
 </script>
 

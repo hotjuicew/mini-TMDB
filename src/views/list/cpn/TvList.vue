@@ -2,7 +2,6 @@
   <div class="tvList">
    <h2>tvList</h2>
     <div class="list">
-      <header class="search-title" >相关豆瓣内容:</header>
       <div class="item" v-for="item in listStore.movieList">
         <div class="left">
           <h3 class="title">{{ item.title }}{{item.name}}</h3>
@@ -36,12 +35,7 @@ const listStore=useListStore()
   position: sticky;
   top: 20vh;
   left: 27vw;
-  .search-title{
-    align-self:flex-start;
-  }
-  .search-title{
-    font-size: 1.2rem;
-  }
+
   .item{
     display: flex;
     justify-content: space-between;
