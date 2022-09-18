@@ -34,8 +34,8 @@ const useListStore = defineStore("list", {
                 await this.getSearchMovie(),
                 await this.getSearchPerson(),
                 await this.getSearchCollection()
-            ]).then(axiosInstance.spread((tvRes, movieRes, personRes, collectionRes) => {
-                this.tvData = tvRes.data
+            ]).then(axiosInstance.spread(async (tvRes, movieRes, personRes, collectionRes) => {
+                this.tvData = await tvRes.data
                 this.movieData = movieRes.data
                 this.personData = personRes.data
                 this.collectionData = collectionRes.data

@@ -5,13 +5,13 @@
       <div class="item" v-for="item in tvList">
         <div class="left">
           <h3 class="title">{{item.name}}</h3>
-          <p class="original-title" v-if="item.original_name!==item.name">原名：{{item.original_name}}</p>
-          <span class="time">{{item.first_air_date}}</span>
-          <star-rate :value="item.vote_average"></star-rate>
+          <p class="original-title" v-if="item.originalName!==item.name">原名：{{item.originalName}}</p>
+          <span class="time">{{item.firstAirDate}}</span>
+          <star-rate :value="item.voteAverage"></star-rate>
           <div class="overview">{{item.overview}}</div>
         </div>
         <div class="right">
-          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.poster_path"  alt="{{item.name}}">
+          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.posterPath"  alt="{{item.name}}">
         </div>
       </div>
     </div>
@@ -19,10 +19,14 @@
 </template>
 
 <script setup>
+import jsonToHump from "@/hooks/jsonToHump";
 import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
 const listStore=useListStore()
-const tvList=listStore.tvData.results
+const tvData=listStore.tvData
+jsonToHump(tvData)
+const tvList=tvData.results
+console.log(tvList)
 </script>
 
 <style lang="less" scoped>

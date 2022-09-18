@@ -17,8 +17,8 @@
 import {defineProps, ref} from 'vue'
 
 // 接收父组件传递过来的值
-const props = defineProps(['value'])
-let value=ref((props.value/2).toFixed(1))
+const props = defineProps({value:{type:Number }})
+let value=ref(parseFloat((props.value/2).toFixed(1)))
 </script>
 
 <style lang="less" scoped>
