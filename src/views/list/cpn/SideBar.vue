@@ -5,8 +5,8 @@
         default-active="1"
         class="el-menu-vertical-demo"
     >
-      <el-menu-item index="1" >
-        <span class="side-bar-name" @click="clickTV">剧集</span>
+      <el-menu-item index="1" @click="clickTV">
+        <span class="side-bar-name" >剧集</span>
       </el-menu-item>
       <el-menu-item index="2" @click="clickMovie">
         <span class="side-bar-name">电影</span>

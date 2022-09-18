@@ -1,17 +1,17 @@
 <template>
   <div class="movie-list">
-    <h2>tvList</h2>
+    <h2>movie</h2>
     <div class="list">
       <div class="item" v-for="item in movieList">
         <div class="left">
           <h3 class="title">{{ item.title }}</h3>
-          <p class="original-title" v-if="item.original_title!==item.title">原名：{{item.original_title}}</p>
-          <span class="time">{{item.release_date}}</span>
-          <star-rate :value="item.vote_average"></star-rate>
+          <p class="original-title" v-if="item.originalTitle!==item.title">原名：{{item.original_Title}}</p>
+          <span class="time">{{item.releaseDate}}</span>
+          <star-rate :value="item.voteAverage"></star-rate>
           <div class="overview">{{item.overview}}</div>
         </div>
-        <div class="right">
-          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.poster_path"  alt="{{item.name}}">
+        <div class="right" v-if="item.posterPath">
+          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.posterPath"  alt="{{item.name}}">
         </div>
       </div>
     </div>
@@ -21,8 +21,11 @@
 <script setup>
 import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
+import jsonToHump from "@/hooks/jsonToHump";
 const listStore=useListStore()
-const movieList=listStore.movieData.results
+const movieData=listStore.movieData
+jsonToHump(movieData)
+const movieList=movieData.results
 </script>
 
 <style lang="less" scoped>

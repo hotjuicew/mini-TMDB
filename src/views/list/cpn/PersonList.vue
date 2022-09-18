@@ -2,26 +2,38 @@
 <template>
   <div class="person-list">
     <h2>personList</h2>
-<!--    <div class="list">-->
-<!--      <div class="item" v-for="item in personList">-->
-<!--        <div class="left">-->
-<!--          <h3 class="title">{{item.name}}</h3>-->
-<!--          <span class="time">{{item['known_for']['first_air_date']}}</span>-->
+    <div class="list">
+      <div class="item" v-for="item in personList">
+        <div class="left">
+          <h3 class="title">{{item.name}}</h3>
+          <span class="time">{{item.knownFor.firstAirDate}}</span>
 
-<!--        </div>-->
-<!--        <div class="right">-->
-<!--          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.known_for.poster_path"-->
-<!--               alt="{{item.name}}">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+        </div>
+        <template v-if="item.profilePath">
+          <div class="right" >
+            <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.profilePath"
+                 alt="{{item.name}}">
+          </div>
+        </template>
+        <template v-else >
+          <div class="right" >
+            <img src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg" alt="{{item.name}}">
+          </div>
+        </template>
+
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import useListStore from "@/stores/listStore";
+import jsonToHump from "@/hooks/jsonToHump";
 const listStore=useListStore()
-const personList=listStore.personData.results
+const personData=listStore.personData
+jsonToHump(personData)
+const personList=personData.results
+console.log(personList[0].knownFor.firstAirDate)
 </script>
 
 <style lang="less" scoped>
