@@ -2,7 +2,7 @@
   <div class="tvList">
    <h2>tvList</h2>
     <div class="list">
-      <div class="item" v-for="item in listStore.tvList">
+      <div class="item" v-for="item in tvList">
         <div class="left">
           <h3 class="title">{{item.name}}</h3>
           <p class="original-title" v-if="item.original_name!==item.name">原名：{{item.original_name}}</p>
@@ -22,6 +22,7 @@
 import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
 const listStore=useListStore()
+const tvList=listStore.tvData.results
 </script>
 
 <style lang="less" scoped>

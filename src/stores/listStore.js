@@ -1,7 +1,6 @@
 import {defineStore} from "pinia";
 import axiosInstance from "@/servers/request";
 import axios from "axios";
-import jsonToHump from "@/hooks/jsonToHump";
 axiosInstance.all = axios.all
 axiosInstance.spread = axios.spread
 const useListStore = defineStore("list", {
@@ -11,35 +10,35 @@ const useListStore = defineStore("list", {
         movieData: {},
         personData: {},
         collectionData: {},
-        tvList: [],
-        movieList: [],
-        personList: [],
-        collectionList: [],
+        // tvList: [],
+        // movieList: [],
+        // personList: [],
+        // collectionList: [],
     }),
     getters: {},
 
 
     actions: {
-        async getSearchData() {
-            await this.getSearchList()
-            this.tvList =  this.tvData?.results
-            this.movieList =  this.movieData?.results
-            this.personList = this.personData?.results
-            this.collectionList =  this.collectionData?.results
-        }
-        ,
+        // async getSearchData() {
+        //     await this.getSearchList()
+        //     this.tvList =  this.tvData?.results
+        //     this.movieList =  this.movieData?.results
+        //     this.personList = this.personData?.results
+        //     this.collectionList =  this.collectionData?.results
+        // }
+
         //axios.all是一个静态方法
-         getSearchList() {
+         async getSearchData() {
             Promise.all([
-                this.getSearchTV(),
-                this.getSearchMovie(),
-                this.getSearchPerson(),
-                this.getSearchCollection()
+               await this.getSearchTV(),
+                await this.getSearchMovie(),
+                await this.getSearchPerson(),
+                await this.getSearchCollection()
             ]).then(axiosInstance.spread((tvRes, movieRes, personRes, collectionRes) => {
-                this.tvData = jsonToHump(tvRes.data)
-                this.movieData = jsonToHump(movieRes.data )
-                this.personData = jsonToHump(personRes.data)
-                this.collectionData = jsonToHump(collectionRes.data)
+                this.tvData = tvRes.data
+                this.movieData = movieRes.data
+                this.personData = personRes.data
+                this.collectionData = collectionRes.data
             }))
         },
 

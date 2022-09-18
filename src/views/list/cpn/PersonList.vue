@@ -2,25 +2,26 @@
 <template>
   <div class="person-list">
     <h2>personList</h2>
-    <div class="list">
-      <div class="item" v-for="item in listStore.personList">
-        <div class="left">
-          <h3 class="title">{{item.name}}</h3>
-          <span class="time">{{item['known_for']['first_air_date']}}</span>
+<!--    <div class="list">-->
+<!--      <div class="item" v-for="item in personList">-->
+<!--        <div class="left">-->
+<!--          <h3 class="title">{{item.name}}</h3>-->
+<!--          <span class="time">{{item['known_for']['first_air_date']}}</span>-->
 
-        </div>
-        <div class="right">
-          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.known_for.poster_path"
-               alt="{{item.name}}">
-        </div>
-      </div>
-    </div>
+<!--        </div>-->
+<!--        <div class="right">-->
+<!--          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.known_for.poster_path"-->
+<!--               alt="{{item.name}}">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 
 <script setup>
 import useListStore from "@/stores/listStore";
 const listStore=useListStore()
+const personList=listStore.personData.results
 </script>
 
 <style lang="less" scoped>
