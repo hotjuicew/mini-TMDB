@@ -1,7 +1,7 @@
 <template>
   <div class="list-view">
-    <side-bar :key="key.value"></side-bar>
-<router-view ></router-view>
+    <side-bar :key="key"></side-bar>
+<router-view :key="key"></router-view>
   </div>
 </template>
 

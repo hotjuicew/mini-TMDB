@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <search-bar></search-bar>
-   <router-view :key="key"></router-view>
+   <router-view ></router-view>
   </div>
 
 </template>
