@@ -15,6 +15,16 @@
       </div>
     </div>
     <div class="not-found" v-else>找不到和您的查询相符的剧集,可以换个关键词试试</div>
+    <div class="pagination">
+      <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="tvData.page"
+      layout="prev, pager, next"
+      :page-count="tvData.totalPages"
+      :total="tvData.totalResults"
+    />
+    </div>
   </div>
 </template>
 
@@ -24,6 +34,14 @@ import StarRate from '@/components/StarRate'
 const listStore=useListStore()
 const tvData=listStore.tvDataJTH()
 const tvList=tvData.results
+ //改变页码条数触发的方法
+const handleSizeChange = () => {
+
+}
+//改变页码触发的方法
+const handleCurrentChange = () => {
+
+}
 </script>
 
 <style lang="less" scoped>
