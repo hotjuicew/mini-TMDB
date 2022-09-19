@@ -1,7 +1,6 @@
 <template>
   <div class="movie-list">
-    <h2>movie</h2>
-    <div class="list">
+    <div class="list" v-if="movieData.totalResults!==0">
       <div class="item" v-for="item in movieList">
         <div class="left">
           <h3 class="title">{{ item.title }}</h3>
@@ -15,6 +14,8 @@
         </div>
       </div>
     </div>
+    <div class="not-found" v-else>找不到和您的查询相符的电影,可以换个关键词试试</div>
+
   </div>
 </template>
 
@@ -75,6 +76,9 @@ console.log(movieData.totalResults)
       height: @img-height;
     }
   }
-
+  .not-found{
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
 }
 </style>

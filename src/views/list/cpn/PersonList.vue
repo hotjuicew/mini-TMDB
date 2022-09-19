@@ -2,26 +2,21 @@
 <template>
   <div class="person-list">
     <h2>personList</h2>
-    <div class="list">
+    <div class="list" v-if="personData.totalResults!==0">
       <div class="item" v-for="item in personList">
         <div class="left">
           <h3 class="title">{{item.name}}</h3>
           <span class="time">{{item.knownFor.firstAirDate}}</span>
         </div>
-        <template v-if="item.profilePath">
           <div class="right" >
-            <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.profilePath"
-                 alt="{{item.name}}">
+            <img class="search-img" v-if="item.profilePath" :src="'http://image.tmdb.org/t/p/w500/'+item.profilePath"
+                 :alt="item.name">
           </div>
-        </template>
-        <template v-else >
-          <div class="right" >
-            <img src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg" alt="{{item.name}}">
-          </div>
-        </template>
 
       </div>
     </div>
+    <div class="not-found" v-else>找不到和您的查询相符的人物,可以换个关键词试试</div>
+
   </div>
 </template>
 
@@ -74,6 +69,9 @@ console.log(personData.totalResults)
       height: @img-height;
     }
   }
-
+  .not-found{
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
 }
 </style>

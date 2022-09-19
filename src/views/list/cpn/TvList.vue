@@ -1,7 +1,6 @@
 <template>
   <div class="tvList">
-   <h2>tvList</h2>
-    <div class="list">
+    <div class="list" v-if="tvData.totalResults!==0">
       <div class="item" v-for="item in tvList">
         <div class="left">
           <h3 class="title">{{item.name}}</h3>
@@ -15,6 +14,7 @@
         </div>
       </div>
     </div>
+    <div class="not-found" v-else>找不到和您的查询相符的剧集,可以换个关键词试试</div>
   </div>
 </template>
 
@@ -75,6 +75,9 @@ console.log(tvData.totalResults)
       height: @img-height;
     }
   }
-
+  .not-found{
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
 }
 </style>
