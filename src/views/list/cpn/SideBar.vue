@@ -6,16 +6,28 @@
         class="el-menu-vertical-demo"
     >
       <el-menu-item index="1" @click="clickTV">
-        <span class="side-bar-name" >剧集</span>
+        <div class="item">
+          <span class="side-bar-name" >剧集</span>
+          <span class="num">{{tvTotalResults}}</span>
+        </div>
       </el-menu-item>
       <el-menu-item index="2" @click="clickMovie">
-        <span class="side-bar-name">电影</span>
+       <div class="item">
+         <span class="side-bar-name">电影</span>
+         <span class="num">{{movieTotalResults}}</span>
+       </div>
       </el-menu-item>
       <el-menu-item index="3" @click="clickPerson">
-        <span class="side-bar-name">人物</span>
+        <div class="item">
+          <span class="side-bar-name">人物</span>
+          <span class="num">{{personTotalResults}}</span>
+        </div>
       </el-menu-item>
       <el-menu-item index="4" @click="clickCollectionList">
-        <span class="side-bar-name">系列</span>
+       <div class="item">
+         <span class="side-bar-name">系列</span>
+         <span class="num">{{collectionTotalResults}}</span>
+       </div>
       </el-menu-item>
 
     </el-menu>
@@ -37,6 +49,12 @@ const clickPerson = () => {
 const clickCollectionList = () => {
   router.push('/search/collection')
 }
+import useListStore from "@/stores/listStore";
+const listStore=useListStore()
+const tvTotalResults=listStore.tvDataJTH().totalResults
+const movieTotalResults=listStore.movieDataJTH().totalResults
+const personTotalResults=listStore.personDataJTH().totalResults
+const collectionTotalResults=listStore.collectionDataJTH().totalResults
 </script>
 
 <style lang="less" scoped>
@@ -51,9 +69,24 @@ const clickCollectionList = () => {
   .el-menu-item{
     justify-content: center;
   }
-  .side-bar-name{
-   align-self: center;
-    font-size: 1rem;
+  .item{
+    display: flex;
+    height: 1.5rem;
+
+    .side-bar-name{
+      align-self: center;
+      font-size: 1rem;
+    }
+    .num{
+      margin-left: 1rem;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.8em;
+      font-weight: 300;
+      font-family: 'Roboto Mono', monospace;
+      background-color: rgba(0,0,0,0.08);
+      padding: 0 15px;
+      border-radius: 8px;}
   }
 }
 </style>

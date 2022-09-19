@@ -23,9 +23,9 @@ import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
 import jsonToHump from "@/hooks/jsonToHump";
 const listStore=useListStore()
-const movieData=listStore.movieData
-jsonToHump(movieData)
+const movieData=listStore.movieDataJTH()
 const movieList=movieData.results
+console.log(movieData.totalResults)
 </script>
 
 <style lang="less" scoped>

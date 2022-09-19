@@ -29,9 +29,9 @@
 import useListStore from "@/stores/listStore";
 import jsonToHump from "@/hooks/jsonToHump";
 const listStore=useListStore()
-const personData=listStore.personData
-jsonToHump(personData)
+const personData=listStore.personDataJTH()
 const personList=personData.results
+console.log(personData.totalResults)
 </script>
 
 <style lang="less" scoped>
