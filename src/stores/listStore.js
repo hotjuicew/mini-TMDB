@@ -41,7 +41,7 @@ const useListStore = defineStore("list", {
         //axios.all是一个静态方法
          async getSearchData() {
             Promise.all([
-               await this.getSearchTV(),
+               await this.getSearchTV(1),
                 await this.getSearchMovie(),
                 await this.getSearchPerson(),
                 await this.getSearchCollection()
@@ -54,13 +54,13 @@ const useListStore = defineStore("list", {
         },
 
         //search TV
-        async getSearchTV() {
+        async getSearchTV(page) {
             return await axiosInstance.get('/search/tv', {
                 params: {
                     api_key: '6575ea93f20a3172600a4cfb722e23ce',
                     language: 'zh',
                     query: this.input,
-                    page: 1,
+                    page: page,
                     include_adult: false
                 }
             })

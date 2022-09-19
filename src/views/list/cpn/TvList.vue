@@ -17,7 +17,8 @@
     <div class="not-found" v-else>找不到和您的查询相符的剧集,可以换个关键词试试</div>
     <div class="pagination">
       <el-pagination
-      @size-change="handleSizeChange"
+       :default-current-page='dcp'
+       @size-change="handleSizeChange"
       @current-change="currentChange"
       v-model:current-page="currentPage"
       layout="prev, pager, next"
@@ -31,13 +32,21 @@
 <script setup>
 import useListStore from "@/stores/listStore";
 import StarRate from '@/components/StarRate'
+import {onMounted} from "vue";
 const listStore=useListStore()
 const tvData=listStore.tvDataJTH()
 const tvList=tvData.results
 //鼠标切换当前页面
-function currentChange(currentPage){
-  listStore.tvCrtPage=currentPage
+let dcp
+let crtpg
+async function currentChange(currentPage){
+  crtpg=currentPage
+   listStore.tvCrtPage=currentPage
   console.log(listStore.tvCrtPage)
+  await listStore.getSearchTV(currentPage).then(res=>{
+    listStore.tvData =res.data
+  })
+  listStore.key+=1
 }
 
 
