@@ -23,7 +23,6 @@ import jsonToHump from "@/hooks/jsonToHump";
 const listStore=useListStore()
 const collectionData=listStore.collectionDataJTH()
 const collectionList=collectionData.results
-console.log(collectionData.totalResults)
 </script>
 
 <style lang="less" scoped>

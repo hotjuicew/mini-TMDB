@@ -26,7 +26,6 @@ import jsonToHump from "@/hooks/jsonToHump";
 const listStore=useListStore()
 const movieData=listStore.movieDataJTH()
 const movieList=movieData.results
-console.log(movieData.totalResults)
 </script>
 
 <style lang="less" scoped>

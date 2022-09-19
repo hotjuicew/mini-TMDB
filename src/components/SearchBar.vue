@@ -29,10 +29,13 @@ const router = useRouter()
 let input = ref('')
 
 
+
 async function clickSearch(){
   listStore.input=input.value.trim()
   await listStore.getSearchData()
+  listStore.key+=1
   await router.push("/search")
+  console.log(listStore.key)
 }
 
 </script>
