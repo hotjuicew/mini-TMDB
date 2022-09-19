@@ -6,6 +6,7 @@ axiosInstance.all = axios.all
 axiosInstance.spread = axios.spread
 const useListStore = defineStore("list", {
     state: () => ({
+        tvCrtPage:1,
         key:0,
         input: '',
         tvData: {},

@@ -18,8 +18,8 @@
     <div class="pagination">
       <el-pagination
       @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="tvData.page"
+      @current-change="currentChange"
+      v-model:current-page="currentPage"
       layout="prev, pager, next"
       :page-count="tvData.totalPages"
       :total="tvData.totalResults"
@@ -34,14 +34,13 @@ import StarRate from '@/components/StarRate'
 const listStore=useListStore()
 const tvData=listStore.tvDataJTH()
 const tvList=tvData.results
- //改变页码条数触发的方法
-const handleSizeChange = () => {
-
+//鼠标切换当前页面
+function currentChange(currentPage){
+  listStore.tvCrtPage=currentPage
+  console.log(listStore.tvCrtPage)
 }
-//改变页码触发的方法
-const handleCurrentChange = () => {
 
-}
+
 </script>
 
 <style lang="less" scoped>
