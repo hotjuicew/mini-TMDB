@@ -12,10 +12,6 @@ const useListStore = defineStore("list", {
         movieData: {},
         personData: {},
         collectionData: {},
-        // tvList: [],
-        // movieList: [],
-        // personList: [],
-        // collectionList: [],
     }),
     getters: {},
 

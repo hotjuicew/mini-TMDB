@@ -1,7 +1,6 @@
 
 <template>
   <div class="person-list">
-    <h2>personList</h2>
     <div class="list" v-if="personData.totalResults!==0">
       <div class="item" v-for="item in personList">
         <div class="left">

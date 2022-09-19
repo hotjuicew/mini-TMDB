@@ -1,12 +1,16 @@
 <template>
   <div id="app">
     <search-bar></search-bar>
-   <router-view></router-view>
+   <router-view :key="key"></router-view>
   </div>
 
 </template>
 <script setup>
 import SearchBar from "@/components/SearchBar";
+import useListStore from "@/stores/listStore";
+import {storeToRefs} from "pinia/dist/pinia";
+const listStore=useListStore()
+const { key } = storeToRefs(listStore);
 </script>
 <style>
 #app {

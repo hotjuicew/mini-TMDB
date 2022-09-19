@@ -34,7 +34,7 @@ async function clickSearch(){
   listStore.input=input.value.trim()
   await listStore.getSearchData()
   listStore.key+=1
-  await router.push("/search")
+  await router.push("/search/tv")
   console.log(listStore.key)
 }
 
