@@ -8,7 +8,7 @@
           <p class="original-title" v-if="item.originalName!==item.name">原名：{{item.originalName}}</p>
         </div>
         <div class="right" v-if="item.posterPath">
-          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.posterPath"  alt="{{item.name}}">
+          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500'+item.posterPath"  alt="{{item.name}}">
         </div>
       </div>
     </div>

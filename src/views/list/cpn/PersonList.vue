@@ -7,7 +7,6 @@
         <div class="left">
           <h3 class="title">{{item.name}}</h3>
           <span class="time">{{item.knownFor.firstAirDate}}</span>
-
         </div>
         <template v-if="item.profilePath">
           <div class="right" >
@@ -33,7 +32,6 @@ const listStore=useListStore()
 const personData=listStore.personData
 jsonToHump(personData)
 const personList=personData.results
-console.log(personList[0].knownFor.firstAirDate)
 </script>
 
 <style lang="less" scoped>

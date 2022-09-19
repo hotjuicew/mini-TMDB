@@ -11,7 +11,7 @@
           <div class="overview">{{item.overview}}</div>
         </div>
         <div class="right" v-if="item.posterPath">
-          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500/'+item.posterPath"  alt="{{item.name}}">
+          <img class="search-img" :src="'http://image.tmdb.org/t/p/w500'+item.posterPath"  alt="{{item.name}}">
         </div>
       </div>
     </div>
