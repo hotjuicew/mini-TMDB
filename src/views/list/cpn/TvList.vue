@@ -17,7 +17,7 @@
     <div class="not-found" v-else>找不到和您的查询相符的剧集,可以换个关键词试试</div>
     <div class="pagination">
       <el-pagination
-       :default-current-page="currentPage"
+       :default-current-page="listStore.tvCrtPage"
       @current-change="currentChange"
       v-model:current-page="currentPage"
       layout="prev, pager, next"
@@ -35,9 +35,8 @@ import {onMounted} from "vue";
 const listStore=useListStore()
 const tvData=listStore.tvDataJTH()
 const tvList=tvData.results
-//todo 分页栏切换到2时 虽然数据都已改变，但是高亮还是在1
 //鼠标切换当前页面
-let currentPage
+
 async function currentChange(currentPage){
    listStore.tvCrtPage=currentPage
   console.log(listStore.tvCrtPage)
